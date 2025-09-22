@@ -47,13 +47,7 @@ function playRound(e) {
     winnerDiv.textContent = `DU = ${humanScore} : Computer = ${computerScore}`;
 
 
-    if (humanScore === 5) {
-        btns.forEach(btn => {
-            btn.disabled = true;            
-        });
-        body.appendChild(restartBtn);
-    }
-    else if (computerScore === 5) {
+    if (humanScore === 5 || computerScore === 5) {
         btns.forEach(btn => {
             btn.disabled = true;            
         });
