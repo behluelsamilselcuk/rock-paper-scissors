@@ -1,8 +1,8 @@
 const btns = document.querySelectorAll('button');
-let p = document.querySelector('p');
-const winnerDiv = document.querySelector('div');
+let roundResult = document.querySelector('.round-result');
+const winnerDiv = document.querySelector('.points');
 const restartBtn = document.createElement('button');
-const body = document.querySelector('body');
+const infoDIv = document.querySelector('#information');
 
 restartBtn.textContent = 'Spiel neustarten!';
 
@@ -14,34 +14,36 @@ function getComputerChoice() {
     
     let choice;
     if (randomNum >= 1 && randomNum <= 3) {
-        choice = 'schere';
+        choice = 'Schere';
     } else if (randomNum >= 4 && randomNum <= 6) {
-        choice = 'stein';
+        choice = 'Stein';
     } else {
-        choice = 'papier';
+        choice = 'Papier';
     }
 
     return choice;
 }
 
 function playRound(e) {
-    const humanChoice = e.target.value;
+    const clickedBtn = e.target;
+    const humanChoice = clickedBtn.parentNode.value;
+    console.log(humanChoice)
     const computerChoice = getComputerChoice();
 
     if (humanChoice === computerChoice) {
-        p.textContent = 'Unentschieden! Ihr habt beide das gleiche gewählt!';
+        roundResult.textContent = 'Unentschieden! Ihr habt beide das gleiche gewählt!';
     } else if (
-        humanChoice === 'schere' && computerChoice === 'papier' ||
-        humanChoice === 'papier' && computerChoice === 'stein' ||
-        humanChoice === 'stein' && computerChoice === 'schere'
+        humanChoice === 'Schere' && computerChoice === 'Papier' ||
+        humanChoice === 'Papier' && computerChoice === 'Stein' ||
+        humanChoice === 'Stein' && computerChoice === 'Schere'
     ) {
         humanScore++;
         console.log(humanScore)
-        p.textContent = `Du gewinnst! ${humanChoice} schlägt ${computerChoice}!`;
+        roundResult.textContent = `Du gewinnst! ${humanChoice} schlägt ${computerChoice}!`;
     } else {
         computerScore++;
         console.log(computerScore)
-        p.textContent = `Du verlierst! ${computerChoice} schlägt ${humanChoice}!`;
+        roundResult.textContent = `Du verlierst! ${computerChoice} schlägt ${humanChoice}!`;
     }
 
     winnerDiv.textContent = `DU = ${humanScore} : Computer = ${computerScore}`;
@@ -51,7 +53,7 @@ function playRound(e) {
         btns.forEach(btn => {
             btn.disabled = true;            
         });
-        body.appendChild(restartBtn);
+        infoDIv.appendChild(restartBtn);
     }
 }
 

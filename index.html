@@ -7,12 +7,21 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <button id="rock" value="stein">Rock</button>
-    <button id="paper" value="papier">Paper</button>
-    <button id="scissors" value="schere">Scissors</button>
+    <div id="instructions">
+        <h1>Rock-Paper-Scissors</h1>
+        <p>Wähle aus den dreien aus. Wer zuerst fünf Punkte hat, gewinnt!</p>
+    </div>
+    
+    <div id="choices">
+        <button id="rock" value="Stein"><img src="./images/rock.png" alt="Ein Stein"></button>
+        <button id="paper" value="Papier"><img src="./images/paper.png" alt="Zwei Stück Papiere"></button>
+        <button id="scissors" value="Schere"><img src="./images/scissors.png" alt="Eine Schere"></button>
+    </div>
 
-    <p></p>
-    <div></div>
+    <div id="information">
+        <p class="round-result"></p>
+        <div class="points"></div>
+    </div>
 
     <script src="./script.js"></script>
 </body>
